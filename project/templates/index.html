@@ -1,11 +1,35 @@
 <!doctype html>
 <html>
 	<head>
-		<script src="https://d3js.org/d3.v7.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>Chess Study</title>
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chessground.base.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chessground.brown.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chessground.cburnett.css') }}">
+    	<style>
+    	    #chessground {
+    	        width: 500px;
+    	        height: 500px;
+    	    }
+
+    	    cg-board {
+    	        background-color: #bfcfdd;
+    	    }
+    	</style>
+
+    	<script type="module">
+    	    import { Chessground } from "{{ url_for('static', filename='chessground.js') }}";
+
+    	    const config = {};
+    	    const ground = Chessground(document.getElementById('chessground'), config);
+    	</script>
 	</head>
 	<body>
-		<svg id="glfield"></svg>
-		<script src="{{ url_for('static', filename='client.js')}}"></script>
+		<div id="chessground"></div>
+		<script src="{{ url_for('static', filename='client.js') }}"></script>
 	</body>
 </html>
